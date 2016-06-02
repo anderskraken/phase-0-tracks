@@ -4,7 +4,7 @@
 
 * What is version control?  Why is it useful?
 
-    It is a system that keeps record of changes to files. This is super useful in a number of scenarios, such as:
+    It is a system that keeps record of changes to files. This is super useful in a number of scenarios, including:
     * when more than one developers are working on the same project, version control allows a developer to create a new branch of the project and work on a feature there. Once done, the branch can be merged back into the master branch.
     * when you realise that a change may be causing a problem, you can roll it back, regardless of when it was done.
 
