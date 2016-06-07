@@ -1,0 +1,11 @@
+#contact-info, .accomplishment {
+  font-size: .8em;
+}
+
+.job {
+  background-color: #e9e5dc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+
+}
