@@ -14,6 +14,12 @@ puts "Is the hamster a good candidate for adoption? (y/n)"
 
 adoption = gets.chomp
 
+if adoption = "y"
+  adoption = true
+else
+  adoption = false
+end
+
 puts "Whats the hamsters estimated age?"
 
 est_age = gets.to_i
