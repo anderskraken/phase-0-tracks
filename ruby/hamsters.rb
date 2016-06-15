@@ -24,4 +24,8 @@ else
   est_age
 end
 
-p est_age
+puts "Name: #{hamster_name}
+Volume level: #{volume_level} 
+Fur color: #{fur_color}
+Adoption possible: #{adoption}
+Estimated age: #{est_age}"
