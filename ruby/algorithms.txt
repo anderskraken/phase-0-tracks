@@ -1,0 +1,45 @@
+##Release 0 - Algorithm for Personal Robot (TM) To Use an Elevator##
+
+
+- Visual Search for the following elements, store answers in InElevator:
+    - A button panel
+    - Four walls, forming a floor and ceiling of equal size, max-size:"20 m2"
+    - Sliding door
+- If robot is not InElevator, then use voice synthesizer ("say"): "I am not in an elevator right now", and end algorithm
+- Until robot hears a response, or until robot has attempted three times:
+    - say: "Master, Which floor may I take you to?"
+    - listen and store answer in FloorChosen: integer (range -30 to 400), or text ("ground floor")
+- If no response was heard:
+    - say: "I'm sorry master, I'm afraid I can't do that."
+    - End algorithm
+- Move Visual Focus to the button at top left of button panel
+- Search for Correct Button:
+    - Use Visual Search OCR on current button and store value in NumberSeen
+    - If NumberSeen and FloorChosen are identical, extend robotic arm to press button with gentle pressure and say: "Here we go, master!"
+    - If NumberSeen and FloorChosen are not identical:
+        - move Visual Focus to button to the right, then repeat Search for Correct Button
+        - if there is no button there, return Visual Focus to previous button and move Visual Focus to button below Current Button, then move Visual Focus all the way to the final button on the left side, then repeat Search for Correct Button
+
+##Release 1 - Algorithm for Making Morning Coffee##
+
+- Turn water faucet to cold and lift up handle. Let water flow for 10 seconds.
+- Find, split open, and wet a paper coffee filter.
+- Extract coffee filter holder from coffee maker
+    - If old grounds in holder, through old grounds in bin
+    - Put new coffee filter in holder
+- Find and open bag of coffee beans
+- Until six spoons of coffee beans are in coffee bean grinder:
+    - Use measurement spoon and scoop a flat spoon of coffee beans into coffee bean grinder.
+    - If bag empty, find and open a new bag and repeat
+- Press coffee grind button until all beans have been ground
+- Pull out tray from grinder
+- Poor content of tray into coffee filter
+- Put coffee filter holder in coffee maker
+- Fill up a mug with water from the faucet
+- Poor water from mug into coffee maker tank
+- Press button
+- Wait 3 minutes
+- Until coffee pot is empty:
+    - Poor coffee from coffee pot into smaller mug
+    - Drink from smaller mug
+- When empty, repeat algorithm
