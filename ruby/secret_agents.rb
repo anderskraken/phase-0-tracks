@@ -1,35 +1,27 @@
 # PSEUDOCODE
 
 # Loop through the string
-
 # Increment counter in string until equal to the length of the string
-
-# Call .next! method on each letter
-# 
-# Except if current index = space
-# 
-# Set 
+# Call .next method on each letter
+# Except if current index == space
+# Implicitly return string, by printing string
 
 
-#CoDE
-
-password = "asdfasdfasdf"
+# METHODS
 
 def encrypt(string)
   index = 0
   while index < string.length
-    if string[index] != " "
+    if string[index] == "z"
+      string[index] = "a"
+    elsif string[index] != " "
       string[index] = string[index].next
     end
     index += 1
   end
-
+  p string
 end
 
-
-encrypt(password)
-
-p password
 
 
 #Pseudocode
@@ -40,7 +32,6 @@ p password
 
 
 
-
 def decrypt(string)
   alphabet = "abcdefghijklmnopqrstuvwxyz"
   index = 0
@@ -48,11 +39,42 @@ def decrypt(string)
     string[index] = alphabet[(alphabet.index(string[index]))-1]
     index += 1
   end
+  p string
 end
 
-decrypt(password)
 
-p password
+# Driver Code
+
+# encrypt("abc")
+# encrypt("zed")
+# decrypt("bcd")
+# decrypt("afe")
+
+# decrypt(encrypt("swordfish"))
+
+# This works because the encrypt method returns an
+# implicit return which then is used as input for the
+# decrypt method
+
+
+# PSEUDOCODE
+
+# Ask user for whether they want to decrypt or encrypt
+# Ask user for password
+# Perform requested action with if loop
+
+puts "Would you like to decrypt [d] or encrypt [e] a password"
+user_answer = gets.chomp
+
+puts "What is the password?"
+user_password = gets.chomp
+
+if user_answer == "e"
+  encrypt(user_password)
+elsif user_answer == "d"
+  decrypt(user_password)
+end
+
 
 
 
