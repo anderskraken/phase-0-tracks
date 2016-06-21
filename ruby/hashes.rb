@@ -28,7 +28,7 @@
 
 client_preference = {}
 
-puts "Welcome to the Interior Design Client Preference Program (TM). Please enter the following information."
+puts "Welcome to the Interior Design Client Preference Program (TM). Please enter the following info:"
 
 puts "Name:"
 client_preference[:name] = gets.chomp
@@ -53,21 +53,21 @@ p client_preference
 puts "Type the key would you like to update, or 'none':"
 client_update = gets.chomp.to_sym
 
-p client_update
+# p client_update
 
 puts "Type the value you want to update the key to:"
 
 if client_update == :none
-  puts "none entered"
+#  puts "none entered"
 else
   if client_update == :name || client_update == :decor_theme
-    puts "string"
+#    puts "Data type: string"
     client_preference[client_update] = gets.chomp
   elsif client_update == :age || client_update == :no_of_children
-    puts "integer"
+#    puts "Data type: integer"
     client_preference[client_update] = gets.to_i
   elsif client_update == :allergic_to_hamster || client_update == :blind
-    puts "boolean"
+#    puts "Data type: boolean [yes/no]"
     client_preference[client_update] = gets[0] == 'y'
   end
   p client_preference
