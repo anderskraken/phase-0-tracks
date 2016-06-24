@@ -24,12 +24,9 @@
 
 def next_letter (name)
   vowels = "aeiou".split('')
-# p vowels
 alphabet = ('a'..'z').to_a
 consonants = alphabet - vowels
-# p consonants
 name_array = name.split('')
-# p name_array
 name_array.map! { |letter|
   if letter == "u"
     "a"
@@ -49,9 +46,12 @@ end
 
 # METHOD CALLS
 
-puts "Welcome to Alias-o-matic 3000 (TM)!
-Please enter a name you need an alias for.
+puts "Welcome to the Alias-o-matic 3000 (TM)!
+Please enter the names you need aliases for.
+Hit the enter key between each name.
 When you have enough aliases, please type 'quit'."
+
+spy_names = {}
 
 loop do
   real_name = gets.chomp
@@ -62,5 +62,10 @@ loop do
   capitalised_name_array = reversed_name_array.map { |name| name.capitalize }
   reversed_name = capitalised_name_array.join(' ')
   spy_name = reversed_name
+  spy_names[real_name] = spy_name
   p spy_name
+end
+
+spy_names.each do |real_name, spy_name|
+puts "#{real_name} is also known as #{spy_name}."
 end
