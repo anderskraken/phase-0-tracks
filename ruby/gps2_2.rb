@@ -7,13 +7,10 @@
   # set default quantity - loop through the array to set default quantity value and turn array - into hash
 # output: Hash with grocery items as keys and quantities as values
 
-string_of_items = "cheese tomatoes dough basil pepperoni"
-
-
-def create_list(string_of_items)
+def create_list(string_of_items, default_quantity)
   grocery_array = string_of_items.split(' ')
   grocery_hash = {}
-  grocery_array.each { |item| grocery_hash[item] = 1 }
+  grocery_array.each { |item| grocery_hash[item] = default_quantity }
   grocery_hash
 end
 
@@ -22,7 +19,6 @@ end
 # input: hash, and then item name and optional quantity within the hash
 # steps: define a method that takes input name and quantity and adds it to the hash a a key and value
 # output: hash with new item and quantity
-
 
 def add_item(new_item, new_item_quantity, grocery_hash) 
   grocery_hash[new_item] = new_item_quantity
@@ -51,6 +47,7 @@ def update_item(updated_item, updated_item_quantity, grocery_hash)
   return grocery_hash
 end
 
+
 # Method to print a list and make it look pretty
 # input: hash
 # steps: define method to print hash -  loop through the hash printing with colon after keys and then the values
@@ -63,10 +60,14 @@ def print_list(my_groceries)
   puts "----------"
 end
 
+
 # DRIVER CODE
 
+string_of_items = "cheese tomatoes dough basil pepperoni"
+default_quantity = 1
+
 puts "Create list:"
-my_groceries = create_list(string_of_items)
+my_groceries = create_list(string_of_items, default_quantity)
 p my_groceries
 
 puts "Add to list:"
