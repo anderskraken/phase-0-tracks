@@ -17,6 +17,27 @@ class Santa
     puts "That was a good #{cookie_type}!"
   end
 
+  def celebrate_birthday
+    @age += 1
+  end
+
+  def get_mat_at(name)
+    @reindeer_ranking.delete(name)
+    @reindeer_ranking.push(name)
+  end
+
+  def gender=(new_gender)
+    @gender = new_gender
+  end
+
+  def age
+    @age
+  end
+
+  def ethnicity
+    @ethnicity
+  end
+
 end
 
 # DRIVER CODE
@@ -40,20 +61,21 @@ santas = []
 # santas << Santa.new("gender fluid", "Mystical Creature (unicorn)")
 # santas << Santa.new("N/A", "N/A")
 
-# REFACTORING INITIALIZATIONS
-
-example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
-example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
-# example_genders.length.times do |i|
-#   santas << Santa.new(example_genders[i], example_ethnicities[i])
-# end
-
-example_genders.each_index do |i|
-  santas << Santa.new(example_genders[i], example_ethnicities[i])
+# Refactoring initializations
+genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
+ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
+genders.each_index do |i|
+  santas << Santa.new(genders[i], ethnicities[i])
 end
 
 # Testing interaction with Santas
 puts "Testing each Santa instance in the hash to make sure it can say ho-ho-ho ..."
 santas.each do |santa|
+# NOTE: not able to call age, since release 0 instructs to
+# state in the class, outside the initialize method.
+# puts "This santa is #{age} years old:"
+  puts "S/he is #{santa.ethnicity} and says:"
   santa.speak
 end
+
+
