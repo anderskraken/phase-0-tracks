@@ -1,13 +1,15 @@
 class Santa
 
+  attr_reader :ethnicity
+  attr_accessor :gender, :reindeer_ranking, :age 
+
   def initialize(gender, ethnicity)
     puts "Initializing Santa instance ..."
     @gender = gender
     @ethnicity = ethnicity
+    @age = 0
+    @reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
   end
-
-  @reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
-  @age = 0
 
   def speak
     puts "Ho, ho, ho! Haaaappy holidays!"
@@ -24,18 +26,6 @@ class Santa
   def get_mat_at(name)
     @reindeer_ranking.delete(name)
     @reindeer_ranking.push(name)
-  end
-
-  def gender=(new_gender)
-    @gender = new_gender
-  end
-
-  def age
-    @age
-  end
-
-  def ethnicity
-    @ethnicity
   end
 
 end
@@ -68,14 +58,38 @@ genders.each_index do |i|
   santas << Santa.new(genders[i], ethnicities[i])
 end
 
+p santas
+
 # Testing interaction with Santas
-puts "Testing each Santa instance in the hash to make sure it can say ho-ho-ho ..."
+puts "Testing each Santa instance to make sure s/he can say ho-ho-ho ..."
 santas.each do |santa|
-# NOTE: not able to call age, since release 0 instructs to
-# state in the class, outside the initialize method.
-# puts "This santa is #{age} years old:"
-  puts "S/he is #{santa.ethnicity} and says:"
+  puts "The #{santa.age}-old santa is #{santa.gender} and #{santa.ethnicity} and says:"
   santa.speak
+end
+
+puts "Changing gender of each Santa instance:"
+santas.each do |santa|
+  santa.gender = santa.gender.reverse
+  puts "The #{santa.ethnicity} santa is now #{santa.gender}."
+end
+
+p santas
+
+puts "Getting mad at Vixen:"
+santas.each do |santa|
+  santa.get_mat_at("Vixen")
+end
+
+p santas
+
+# RELEASE 4
+
+lots_of_santas = []
+
+10000.times do |i|
+  lots_of_santas << Santa.new(genders.sample, ethnicities.sample)
+  lots_of_santas[i].age = Random.rand(140)
+  p lots_of_santas[i]
 end
 
 
