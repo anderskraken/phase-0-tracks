@@ -41,11 +41,46 @@ function findLongestPhrase(arrayOfPhrases) {
 
 // DRIVER CODE
 
-var arr = ["long phrase", "longest phrase", "longer phrase"];
+// var arr = ["long phrase", "longest phrase", "longer phrase"];
+// console.log(findLongestPhrase(arr));
+// var loremArr = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit", "Quid, si reviviscant Platonis illi et deinceps qui eorum auditores fuerunt, et tecum ita loquantur?", "Scisse enim te quis coarguere possit?"];
+// console.log(findLongestPhrase(loremArr));
 
-console.log(findLongestPhrase(arr));
 
-var loremArr = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit", "Quid, si reviviscant Platonis illi et deinceps qui eorum auditores fuerunt, et tecum ita loquantur?", "Scisse enim te quis coarguere possit?"];
+// Release 1
 
-console.log(findLongestPhrase(loremArr));
+// PSEUDO CODE
+
+// - create "for" loop which loops through keys of object 1
+//   - in each iteration: create "for" loop which loops through keys of object 2
+//     - in each iteration: return true if key AND value of object 1 equals key AND value of object 2
+// - else return false
+
+// BUSINESS LOGIC
+
+function sharePair(object1, object2) {
+  var k1;
+  var k2;
+  for (k1 in object1) {
+    for (k2 in object2) {
+      if ((k1 == k2) && (object1[k1] == object2[k2])) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+// DRIVER CODE
+
+var obj1 = {name: "Steven", age: 54};
+var obj2 = {name: "Tamir", age: 54};
+var obj3 = {name: "Tamir", gender: "male", age: 54};
+var obj4 = {}
+
+console.log(sharePair(obj1, obj2))
+
+console.log(sharePair(obj1, obj3))
+
+console.log(sharePair(obj1, obj4))
 
