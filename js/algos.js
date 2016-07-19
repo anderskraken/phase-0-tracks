@@ -73,14 +73,61 @@ function sharePair(object1, object2) {
 
 // DRIVER CODE
 
-var obj1 = {name: "Steven", age: 54};
-var obj2 = {name: "Tamir", age: 54};
-var obj3 = {name: "Tamir", gender: "male", age: 54};
-var obj4 = {}
+// var obj1 = {name: "Steven", age: 54};
+// var obj2 = {name: "Tamir", age: 54};
+// var obj3 = {name: "Tamir", gender: "male", age: 54};
+// var obj4 = {}
 
-console.log(sharePair(obj1, obj2))
+// console.log(sharePair(obj1, obj2))
+// console.log(sharePair(obj1, obj3))
+// console.log(sharePair(obj1, obj4))
 
-console.log(sharePair(obj1, obj3))
 
-console.log(sharePair(obj1, obj4))
+// Release 2
 
+// function that takes an integer and builds an array of strings of the length of that integer
+
+
+// PSEUDOCODE
+
+// define a function that returns a random integer between 1 and 10
+// define a function that returns a random string to the length called
+// define the function that inserts the the called for number of random words into an array
+// write the driver code that does the following 10 times:
+//    - generates an array, prints the array,
+//    - feeds the array to your "longest word" function, and prints the result.
+// BUSINESS LOGIC
+
+
+function randomIntBetween1And10() {
+  return Math.floor(Math.random()*10)+1;
+}
+
+function randomString(len) {
+    charSet = 'abcdefghijklmnopqrstuvwxyz';
+    var randomString = '';
+    for (var i = 0; i < len; i++) {
+      var randomPoz = Math.floor(Math.random() * charSet.length);
+      randomString += charSet.substring(randomPoz,randomPoz+1);
+    }
+    return randomString;
+}
+
+function randomWordsArray(integer) {
+    var array = [];
+    for (var i = 0; i < integer; i++) {
+      array.push(randomString(randomIntBetween1And10(), 'abcdefghijklmnopqrstuvwxyz'));
+    }
+    return array;
+}
+
+// DRIVER CODE
+
+// console.log(randomWordsArray(3));
+// // => 3 random words back
+
+for (var i = 1; i <= 10; i++) {
+  var newArray = randomWordsArray(3);
+  console.log(newArray);
+  console.log(findLongestPhrase(newArray));
+}
