@@ -1,0 +1,27 @@
+
+
+# You've joined two tables before. How do you join three?
+
+sqlite> SELECT * FROM reviews JOIN businesses ON businesses.id = reviews.business_id JOIN users ON users.id = reviews.user_id;
+1|5|Great food!|1|1|1|Grundy Hollow Wedding Chapel|1|Bradford|Pitt
+2|4|Solid food!|1|2|1|Grundy Hollow Wedding Chapel|2|Mandy|Kaling
+3|3|Decent food|2|3|2|Amir's Towing|3|Angela|Jolie
+
+# There are some repetitive columns if we choose to view all fields.
+# Choose instead to just view the user's names, the business name,
+# the star rating, and the comment.
+
+sqlite> SELECT users.first_name, users.last_name, businesses.name, reviews.stars, reviews.comment FROM reviews JOIN businesses ON businesses.id = reviews.business_id JOIN users ON users.id = reviews.user_id;
+Bradford|Pitt|Grundy Hollow Wedding Chapel|5|Great food!
+Mandy|Kaling|Grundy Hollow Wedding Chapel|4|Solid food!
+Angela|Jolie|Amir's Towing|3|Decent food
+
+# How do you view the data of all three tables
+# for just one particular business? 
+
+sqlite> SELECT users.first_name, users.last_name, businesses.name, reviews.stars, reviews.comment FROM reviews JOIN businesses ON businesses.id = reviews.business_id JOIN users ON users.id = reviews.user_id WHERE businesses.name="Grundy Hollow Wedding Chapel";
+Bradford|Pitt|Grundy Hollow Wedding Chapel|5|Great food!
+Mandy|Kaling|Grundy Hollow Wedding Chapel|4|Solid food!
+
+
+
