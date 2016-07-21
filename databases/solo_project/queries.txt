@@ -1,0 +1,67 @@
+# 8.3 Release 2 and 3
+
+## Display the information in one table (either table is fine).
+
+    sqlite> SELECT * FROM votes;
+    1|1|false|1997|Arizona
+    2|1|false|2016-11-08|Arizona
+    3|1|true|2016-11-08 12:08:43|New York
+    4|2|true|2016-11-08 15:05:33|New York
+    5|1|true|2016-11-08 17:45:43|California
+
+## Update an item that meets some condition (you can choose a condition that makes sense).
+
+    sqlite> UPDATE votes SET valid="true", time_cast="2016-11-08 11:08:43" WHERE id=2;
+
+## Display the information in both tables using one query.
+
+    sqlite> SELECT * FROM votes, candidates WHERE votes.vote_for = candidates.id;
+    1|1|false|1997|Arizona|1|Hillary Rodham Clinton
+    2|1|true|2016-11-08 11:08:43|Arizona|1|Hillary Rodham Clinton
+    3|1|true|2016-11-08 12:08:43|New York|1|Hillary Rodham Clinton
+    4|2|true|2016-11-08 15:05:33|New York|2|Donald John Trump
+    5|1|true|2016-11-08 17:45:43|California|1|Hillary Rodham Clinton
+
+## Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.
+
+sqlite> SELECT votes.id, candidates.name FROM candidates JOIN votes ON votes.vote_for = candidates.id;
+1|Hillary Rodham Clinton
+2|Hillary Rodham Clinton
+3|Hillary Rodham Clinton
+4|Donald John Trump
+5|Hillary Rodham Clinton
+
+## Delete an item that meets some condition (you can choose a condition that makes sense).
+
+    sqlite> DELETE FROM votes WHERE valid="false";
+
+## Try a few different joins in your database, and record the commands and the output in queries.txt.
+
+    sqlite> SELECT votes.id, candidates.name FROM candidates INNER JOIN votes ON votes.vote_for = candidates.id;
+    2|Hillary Rodham Clinton
+    3|Hillary Rodham Clinton
+    4|Donald John Trump
+    5|Hillary Rodham Clinton
+
+    sqlite> SELECT votes.id, candidates.name FROM candidates LEFT JOIN votes ON votes.vote_for = candidates.id;
+    2|Hillary Rodham Clinton
+    3|Hillary Rodham Clinton
+    5|Hillary Rodham Clinton
+    4|Donald John Trump
+
+    sqlite> SELECT votes.id, candidates.name FROM candidates RIGHT JOIN votes ON votes.vote_for = candidates.id;
+    Error: RIGHT and FULL OUTER JOINs are not currently supported
+
+    sqlite> SELECT votes.id, candidates.name FROM candidates FULL OUTER JOIN votes ON votes.vote_for = candidates.id;
+    Error: RIGHT and FULL OUTER JOINs are not currently supported
+
+    sqlite> SELECT votes.id, candidates.name FROM candidates LEFT OUTER JOIN votes ON votes.vote_for = candidates.id;
+    2|Hillary Rodham Clinton
+    3|Hillary Rodham Clinton
+    5|Hillary Rodham Clinton
+    4|Donald John Trump
+
+    sqlite> SELECT votes.id, candidates.name FROM candidates NATURAL JOIN votes ON votes.vote_for = candidates.id;
+    Error: a NATURAL join may not have an ON or USING clause
+    sqlite> SELECT votes.id, candidates.name FROM candidates NATURAL JOIN votes;
+    2|Donald John Trump
