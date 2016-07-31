@@ -1,17 +1,19 @@
 console.log("script is running")
 
-function rotate() {
-    document.getElementById("cat").style.transform = "rotate(7deg)";
+function rotate(event) {
+  console.log("image clicked, now rotated");
+  event.target.style.transform = "rotate(7deg)";
 }
 
-function addDisclaimer() {
+function addDisclaimer(event) {
   var para = document.createElement("p");
-  var node = document.createTextNode("No cats were harmed in the making of this page.");
+  var node = document.createTextNode("The cat was not harmed in the rotation of this image.");
   para.appendChild(node);
-  var element = document.getElementById("yet-more");
-  element.appendChild(para);
+  event.target.appendChild(para);
 }
 
-rotate();
+var cat = document.getElementById("cat");
+cat.addEventListener("click", rotate);
 
-addDisclaimer();
+var element = document.getElementById("yet-more");
+element.addEventListener("click", addDisclaimer);
