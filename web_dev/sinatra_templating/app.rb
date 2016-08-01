@@ -17,6 +17,12 @@ get '/students/new' do
   erb :new_student
 end
 
+get '/students/delete' do
+  @students = db.execute("SELECT * FROM students")
+  erb :delete_student
+end
+
+
 # create new students via
 # a form
 post '/students' do
@@ -25,3 +31,12 @@ post '/students' do
 end
 
 # add static resources
+
+# create a Route for delete_student
+
+get '/delete-student' do     ## seems to work the same way with GET or POST
+  db.execute("DELETE FROM students WHERE id = ?", [params['id']])
+  redirect '/'
+end
+
+
