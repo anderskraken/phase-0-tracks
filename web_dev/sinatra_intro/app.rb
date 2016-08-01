@@ -44,3 +44,34 @@ get '/students/:id' do
   student = db.execute("SELECT * FROM students WHERE id=?", [params[:id]])[0]
   student.to_s
 end
+
+# RELEASE 0: Add Routes
+
+# A /contact route that displays an address (you can make up
+# the address).
+
+get '/contact' do
+  "201 W 107 Street<br>Apartment 11<br>New York 10025<br>New York"
+end
+
+# A /great_job route that can take a person's name as a query
+# parameter (not a route parameter) and say "Good job, [person's
+# name]!". If the query parameter is not present, the route simply
+# says "Good job!"
+
+get '/great_job' do
+  name = params[:name]
+  if name
+    "Good job, #{name}!"
+  else
+    "Good job!"
+  end
+end
+
+# A route that uses route parameters to add two numbers and respond
+# with the result. The data types are tricky here -- when will the 
+# data need to be (or arrive as) a string?
+
+get '/:number_1/plus/:number_2' do
+  (params[:number_1].to_i + params[:number_2].to_i).to_s
+end
